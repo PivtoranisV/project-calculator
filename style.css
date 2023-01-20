@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 4px;
+  background-color: hsl(212, 45%, 89%);
+}
+
+.container {
+  border: solid black 2px;
+  background-color: antiquewhite;
+  max-width: 500px;
+}
