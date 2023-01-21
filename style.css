@@ -6,10 +6,22 @@ body {
   min-height: 100vh;
   padding: 4px;
   background-color: hsl(212, 45%, 89%);
+  font-size: larger;
 }
 
 .container {
-  border: solid black 2px;
+  border: solid #cff4fc 2px;
+  border-radius: 8px;
   background-color: antiquewhite;
-  max-width: 500px;
+  max-width: 400px;
+  padding-top: 60px;
+  padding-bottom: 35px;
+}
+
+.my-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: larger;
 }
