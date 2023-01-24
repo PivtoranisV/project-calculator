@@ -10,6 +10,7 @@ const resultDisplay = document.querySelector('.result');
 let firstInput = null;
 let secondInput = null;
 let operatorInput = '';
+let previousResult = null;
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -42,8 +43,18 @@ numberButtons.forEach(function (button) {
 
 operatorButtons.forEach(function (button) {
   button.addEventListener('click', () => {
-    operatorDisplay.textContent = button.textContent;
-    operatorInput = button.textContent;
+    if (firstInput && secondInput) {
+      previousResult = operate(operatorInput, firstInput, secondInput);
+      firstInput = previousResult;
+      firstInputDisplay.textContent = previousResult;
+      operatorInput = button.textContent;
+      operatorDisplay.textContent = operatorInput;
+      secondInput = null;
+      secondInputDisplay.textContent = '';
+    } else {
+      operatorDisplay.textContent = button.textContent;
+      operatorInput = button.textContent;
+    }
   });
 });
 
@@ -55,6 +66,9 @@ clearButton.addEventListener('click', () => {
   firstInputDisplay.textContent = '';
   secondInputDisplay.textContent = '';
   operatorDisplay.textContent = '';
-  operatorInput = '';
   resultDisplay.textContent = 0;
+  operatorInput = '';
+  previousResult = null;
+  firstInput = null;
+  secondInput = null;
 });
