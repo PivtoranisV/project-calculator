@@ -14,13 +14,13 @@ const divide = (a, b) => a / b;
 
 const operate = (operator, a, b) => {
   if (operator === '+') {
-    add(a, b);
+    return add(a, b);
   } else if (operator === '-') {
-    subtract(a, b);
+    return subtract(a, b);
   } else if (operator === '*') {
-    multiply(a, b);
+    return multiply(a, b);
   } else {
-    divide(a, b);
+    return divide(a, b);
   }
 };
 
@@ -42,6 +42,5 @@ operatorButtons.forEach(function (button) {
 });
 
 resultButton.addEventListener('click', () => {
-  console.log('result');
-  operate(operatorInput, firstInput, secondInput);
+  resultDisplay.textContent = operate(operatorInput, firstInput, secondInput);
 });
