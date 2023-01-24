@@ -2,7 +2,9 @@ const numberButtons = document.querySelectorAll('.btn-num');
 const operatorButtons = document.querySelectorAll('.btn-operator');
 const resultButton = document.querySelector('.btn-result');
 const clearButton = document.querySelector('.btn-clear');
-const inputDisplay = document.querySelector('.input');
+const firstInputDisplay = document.querySelector('.first-number');
+const secondInputDisplay = document.querySelector('.second-number');
+const operatorDisplay = document.querySelector('.operator');
 const resultDisplay = document.querySelector('.result');
 
 let firstInput = null;
@@ -28,18 +30,20 @@ const operate = (operator, a, b) => {
 
 numberButtons.forEach(function (button) {
   button.addEventListener('click', () => {
-    inputDisplay.textContent += button.textContent;
-    !operatorInput
-      ? (firstInput = Number(inputDisplay.textContent))
-      : (secondInput = Number(inputDisplay.textContent));
+    if (!operatorInput) {
+      firstInputDisplay.textContent += button.textContent;
+      firstInput = Number(firstInputDisplay.textContent);
+    } else {
+      secondInputDisplay.textContent += button.textContent;
+      secondInput = Number(secondInputDisplay.textContent);
+    }
   });
 });
 
 operatorButtons.forEach(function (button) {
   button.addEventListener('click', () => {
-    inputDisplay.textContent += button.textContent;
+    operatorDisplay.textContent = button.textContent;
     operatorInput = button.textContent;
-    inputDisplay.textContent = '';
   });
 });
 
@@ -48,6 +52,9 @@ resultButton.addEventListener('click', () => {
 });
 
 clearButton.addEventListener('click', () => {
-  inputDisplay.textContent = '';
+  firstInputDisplay.textContent = '';
+  secondInputDisplay.textContent = '';
+  operatorDisplay.textContent = '';
+  operatorInput = '';
   resultDisplay.textContent = 0;
 });

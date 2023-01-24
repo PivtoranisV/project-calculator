@@ -25,3 +25,19 @@ body {
   padding-bottom: 10px;
   font-size: larger;
 }
+
+.input {
+  height: 5px;
+  font-size: small;
+}
+
+.operator {
+  margin: 0 3px;
+}
+
+.result {
+  margin: 0;
+  padding: 5px 0;
+  font-weight: bold;
+  font-size: larger;
+}
