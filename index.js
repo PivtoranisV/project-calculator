@@ -1,8 +1,10 @@
 const numberButtons = document.querySelectorAll('.btn-num');
 const operatorButtons = document.querySelectorAll('.btn-operator');
 const resultButton = document.querySelector('.btn-result');
+const clearButton = document.querySelector('.btn-clear');
 const inputDisplay = document.querySelector('.input');
 const resultDisplay = document.querySelector('.result');
+
 let firstInput = null;
 let secondInput = null;
 let operatorInput = '';
@@ -17,7 +19,7 @@ const operate = (operator, a, b) => {
     return add(a, b);
   } else if (operator === '-') {
     return subtract(a, b);
-  } else if (operator === '*') {
+  } else if (operator === 'x') {
     return multiply(a, b);
   } else {
     return divide(a, b);
@@ -43,4 +45,9 @@ operatorButtons.forEach(function (button) {
 
 resultButton.addEventListener('click', () => {
   resultDisplay.textContent = operate(operatorInput, firstInput, secondInput);
+});
+
+clearButton.addEventListener('click', () => {
+  inputDisplay.textContent = '';
+  resultDisplay.textContent = 0;
 });
