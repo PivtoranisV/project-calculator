@@ -2,6 +2,7 @@ const numberButtons = document.querySelectorAll('.btn-num');
 const operatorButtons = document.querySelectorAll('.btn-operator');
 const resultButton = document.querySelector('.btn-result');
 const clearButton = document.querySelector('.btn-clear');
+const backspaceButton = document.querySelector('.btn-delete');
 const decimalButton = document.querySelector('.btn-dot');
 const signButton = document.querySelector('.btn-sign');
 const firstInputDisplay = document.querySelector('.first-number');
@@ -73,6 +74,19 @@ clearButton.addEventListener('click', () => {
   previousResult = null;
   firstInput = null;
   secondInput = null;
+});
+
+backspaceButton.addEventListener('click', () => {
+  if (!operatorInput) {
+    firstInputDisplay.textContent = firstInputDisplay.textContent.slice(0, -1);
+    firstInput = Number(firstInputDisplay.textContent);
+  } else {
+    secondInputDisplay.textContent = secondInputDisplay.textContent.slice(
+      0,
+      -1
+    );
+    secondInput = Number(secondInputDisplay.textContent);
+  }
 });
 
 decimalButton.addEventListener('click', () => {
