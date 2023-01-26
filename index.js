@@ -2,6 +2,7 @@ const numberButtons = document.querySelectorAll('.btn-num');
 const operatorButtons = document.querySelectorAll('.btn-operator');
 const resultButton = document.querySelector('.btn-result');
 const clearButton = document.querySelector('.btn-clear');
+const decimalButton = document.querySelector('.btn-dot');
 const firstInputDisplay = document.querySelector('.first-number');
 const secondInputDisplay = document.querySelector('.second-number');
 const operatorDisplay = document.querySelector('.operator');
@@ -71,4 +72,16 @@ clearButton.addEventListener('click', () => {
   previousResult = null;
   firstInput = null;
   secondInput = null;
+});
+
+decimalButton.addEventListener('click', () => {
+  if (!operatorInput) {
+    if (!firstInputDisplay.textContent.includes('.')) {
+      firstInputDisplay.textContent += '.';
+    }
+  } else {
+    if (!secondInputDisplay.textContent.includes('.')) {
+      secondInputDisplay.textContent += '.';
+    }
+  }
 });
