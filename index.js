@@ -3,6 +3,7 @@ const operatorButtons = document.querySelectorAll('.btn-operator');
 const resultButton = document.querySelector('.btn-result');
 const clearButton = document.querySelector('.btn-clear');
 const decimalButton = document.querySelector('.btn-dot');
+const signButton = document.querySelector('.btn-sign');
 const firstInputDisplay = document.querySelector('.first-number');
 const secondInputDisplay = document.querySelector('.second-number');
 const operatorDisplay = document.querySelector('.operator');
@@ -75,13 +76,19 @@ clearButton.addEventListener('click', () => {
 });
 
 decimalButton.addEventListener('click', () => {
+  if (!operatorInput && !firstInputDisplay.textContent.includes('.')) {
+    firstInputDisplay.textContent += '.';
+  } else if (operatorInput && !secondInputDisplay.textContent.includes('.')) {
+    secondInputDisplay.textContent += '.';
+  }
+});
+
+signButton.addEventListener('click', () => {
   if (!operatorInput) {
-    if (!firstInputDisplay.textContent.includes('.')) {
-      firstInputDisplay.textContent += '.';
-    }
+    firstInput = -firstInput;
+    firstInputDisplay.textContent = firstInput;
   } else {
-    if (!secondInputDisplay.textContent.includes('.')) {
-      secondInputDisplay.textContent += '.';
-    }
+    secondInput = -secondInput;
+    secondInputDisplay.textContent = secondInput;
   }
 });
