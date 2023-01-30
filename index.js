@@ -110,8 +110,6 @@ signButton.addEventListener('click', () => {
 // keyboard support
 
 document.addEventListener('keydown', (event) => {
-  console.log(event.key);
-  console.log(event.code);
   if (event.key >= '0' && event.key <= '9') {
     const numberButton = document.querySelector(
       `.btn-num[data-value='${event.key}']`
@@ -127,5 +125,13 @@ document.addEventListener('keydown', (event) => {
       `.btn-operator[data-value='${event.key}']`
     );
     operatorButton.click();
+  } else if (event.key === '=' || event.key === 'Enter') {
+    resultButton.click();
+  } else if (event.key === 'Escape') {
+    clearButton.click();
+  } else if (event.key === 'Backspace') {
+    backspaceButton.click();
+  } else if (event.key === '.') {
+    decimalButton.click();
   }
 });
