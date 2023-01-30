@@ -21,14 +21,15 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 const operate = (operator, a, b) => {
-  if (operator === '+') {
-    return add(a, b);
-  } else if (operator === '-') {
-    return subtract(a, b);
-  } else if (operator === 'x') {
-    return multiply(a, b);
-  } else {
-    return divide(a, b);
+  switch (operator) {
+    case '+':
+      return add(a, b);
+    case '-':
+      return subtract(a, b);
+    case '*':
+      return multiply(a, b);
+    default:
+      return divide(a, b);
   }
 };
 
@@ -36,10 +37,10 @@ numberButtons.forEach(function (button) {
   button.addEventListener('click', () => {
     if (!operatorInput) {
       firstInputDisplay.textContent += button.textContent;
-      firstInput = Number(firstInputDisplay.textContent);
+      firstInput = +firstInputDisplay.textContent;
     } else {
       secondInputDisplay.textContent += button.textContent;
-      secondInput = Number(secondInputDisplay.textContent);
+      secondInput = +secondInputDisplay.textContent;
     }
   });
 });
@@ -62,7 +63,13 @@ operatorButtons.forEach(function (button) {
 });
 
 resultButton.addEventListener('click', () => {
-  resultDisplay.textContent = operate(operatorInput, firstInput, secondInput);
+  operatorInput
+    ? (resultDisplay.textContent = operate(
+        operatorInput,
+        firstInput,
+        secondInput
+      ))
+    : (resultDisplay.textContent = 0);
 });
 
 clearButton.addEventListener('click', () => {
@@ -79,13 +86,13 @@ clearButton.addEventListener('click', () => {
 backspaceButton.addEventListener('click', () => {
   if (!operatorInput) {
     firstInputDisplay.textContent = firstInputDisplay.textContent.slice(0, -1);
-    firstInput = Number(firstInputDisplay.textContent);
+    firstInput = +firstInputDisplay.textContent;
   } else {
     secondInputDisplay.textContent = secondInputDisplay.textContent.slice(
       0,
       -1
     );
-    secondInput = Number(secondInputDisplay.textContent);
+    secondInput = +secondInputDisplay.textContent;
   }
 });
 
