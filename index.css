@@ -64,3 +64,23 @@ body {
   font-weight: 600;
   font-size: larger;
 }
+
+.special-divider {
+  border: none;
+  background-color: var(--calculator-background);
+  height: 2px;
+  width: 50%;
+  margin: 12px auto;
+}
+
+.attribution {
+  margin-top: 50px;
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attribution a {
+  text-decoration: none;
+}
