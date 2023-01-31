@@ -122,6 +122,7 @@ document.addEventListener('keydown', (event) => {
       `.btn-num[data-value='${event.key}']`
     );
     numberButton.click();
+    numberButton.classList.add('clicked');
   } else if (
     event.key === '+' ||
     event.key === '-' ||
@@ -132,13 +133,45 @@ document.addEventListener('keydown', (event) => {
       `.btn-operator[data-value='${event.key}']`
     );
     operatorButton.click();
+    operatorButton.classList.add('clicked');
   } else if (event.key === '=' || event.key === 'Enter') {
     resultButton.click();
+    resultButton.classList.add('clicked');
   } else if (event.key === 'Escape') {
     clearButton.click();
+    clearButton.classList.add('clicked');
   } else if (event.key === 'Backspace') {
     backspaceButton.click();
+    backspaceButton.classList.add('clicked');
   } else if (event.key === '.') {
     decimalButton.click();
+    decimalButton.classList.add('clicked');
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.key >= '0' && event.key <= '9') {
+    const numberButton = document.querySelector(
+      `.btn-num[data-value='${event.key}']`
+    );
+    numberButton.classList.remove('clicked');
+  } else if (
+    event.key === '+' ||
+    event.key === '-' ||
+    event.key === '*' ||
+    event.key === '/'
+  ) {
+    const operatorButton = document.querySelector(
+      `.btn-operator[data-value='${event.key}']`
+    );
+    operatorButton.classList.remove('clicked');
+  } else if (event.key === '=' || event.key === 'Enter') {
+    resultButton.classList.remove('clicked');
+  } else if (event.key === 'Escape') {
+    clearButton.classList.remove('clicked');
+  } else if (event.key === 'Backspace') {
+    backspaceButton.classList.remove('clicked');
+  } else if (event.key === '.') {
+    decimalButton.classList.remove('clicked');
   }
 });
