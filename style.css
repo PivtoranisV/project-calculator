@@ -3,6 +3,7 @@
 :root {
   --main-background-color: hsl(213, 86%, 89%);
   --shadow-color: rgba(0, 4, 255, 0.289);
+  --shadow-focus: rgba(255, 0, 0, 0.506);
   --calculator-background: rgb(247, 246, 208);
 }
 
@@ -29,9 +30,8 @@ body {
 
 .my-btn {
   width: 100%;
-  margin-top: 20px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  margin-top: 15px;
+  padding: 15px;
   font-size: larger;
   font-weight: 600;
   box-shadow: 4px 4px 4px var(--shadow-color);
@@ -42,6 +42,11 @@ body {
 .my-btn:hover,
 .clicked {
   transform: perspective(30px) rotateX(4deg);
+  box-shadow: 4px 4px 4px var(--shadow-focus);
+}
+
+.display {
+  box-shadow: 2px 2px 2px var(--shadow-color) inset;
 }
 
 .input {
